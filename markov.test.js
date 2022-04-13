@@ -7,7 +7,7 @@ describe("markov", function () {
     //     let machine = new MarkovMachine(text);
     // });
 
-    
+
 
     test("getChain returns an object from your input", function () {
 
@@ -39,7 +39,7 @@ describe("markov", function () {
         expect(machine.getChains()).toEqual({
             I: [ 'am' ],
             am: [ 'the' ],
-            the: [ 'cat' ],
+            the: [ 'cat'],
             cat: [ 'in' ],
             in: [ 'a' ],
             a: [ 'hat.' ],
@@ -47,6 +47,23 @@ describe("markov", function () {
           });
 
         expect(machine.getText()).toEqual("I am the cat in a hat.");
+
+    });
+
+
+    test("getText returns a new text created from the machine.chains", function () {
+
+        let text = "I am the cat in the hat.";
+        let machine = new MarkovMachine(text);
+        let generatedText = machine.getText();
+        let textArray = generatedText.split(" ");
+        let expected = ["cat", "hat."]
+        console.log(machine.chains["the"])
+        expect(generatedText.startsWith("I am the")).toEqual(true);
+        //textArray[3]  machine.chains[textArray[2]]
+        expect(expected).toContain(textArray[3]);
+        //expect(textArray[3]).toEqual(expect.arrayContaining(expected));
+
 
     });
 
