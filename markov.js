@@ -77,7 +77,12 @@ class MarkovMachine {
   }
 }
 
-
+/** Gets random element from array */
 function getRandomWord(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+module.exports = {
+  getRandomWord: getRandomWord,
+  MarkovMachine: MarkovMachine
 }
